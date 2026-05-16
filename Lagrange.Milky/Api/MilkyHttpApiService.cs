@@ -131,7 +131,7 @@ public class MilkyHttpApiService(ILogger<MilkyHttpApiService> logger, IOptions<M
         string? authorization = context.Request.Headers["Authorization"];
         if (authorization == null) return false;
         if (!authorization.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase)) return false;
-        ReadOnlySpan<char> aspan = authorization.AsSpan(7..)
+        ReadOnlySpan<char> aspan = authorization.AsSpan(7..);
         return aspan.ToString() == _token;
     }
 
